@@ -3,21 +3,20 @@ title: Style Guide
 type: style-guide
 ---
 
-This is the official style guide for Vue-specific code. If you use Vue in a project, it's a great reference to avoid errors, bikeshedding, and anti-patterns. However, we don't believe that any style guide is ideal for all teams or projects, so mindful deviations are encouraged based on past experience, the surrounding tech stack, and personal values.
+Đây là bản hướng dẫn về phong cách (style guide) chính thức dành cho code Vue. Nếu bạn dùng Vue trong dự án của mình, bản hướng dẫn này sẽ là một tham chiếu hữu ích giúp tránh xảy ra lỗi, anti-pattern, hoặc phí thời gian vào những tranh cãi không đáng có. Tất nhiên, chúng tôi cũng tin rằng không có style guide nào là hoàn hảo cho tất cả các team hoặc dự án, vì thế bạn nên điều chỉnh tùy theo kinh nghiệm, thiết lập kĩ thuật, và khả năng cá nhân của từng người.  
 
-For the most part, we also avoid suggestions about JavaScript or HTML in general. We don't mind whether you use semicolons or trailing commas. We don't mind whether your HTML uses single-quotes or double-quotes for attribute values. Some exceptions will exist however, where we've found that a particular pattern is helpful in the context of Vue.
+Chúng tôi cũng sẽ tránh các đề nghị về JavaScript về HTML nói chung. Việc bạn dùng hay không dùng dấu chấm phẩy, dùng nháy đơn hay dấu kép cho thuộc tính HTML, đối với chúng tôi là không quan trọng. Tuy nhiên cũng sẽ có một số ngoại lệ khi chúng tôi nhận thấy một kiểu mẫu (pattern) cụ thể nào đó có thể có ích hơn trong ngữ cảnh của Vue.
 
-> **Soon, we'll also provide tips for enforcement.** Sometimes you'll simply have to be disciplined, but wherever possible, we'll try to show you how to use ESLint and other automated processes to make enforcement simpler.
+> **Sắp tới chúng tôi cũng sẽ cung cấp gợi ý về các quy định bắt buộc.** Đôi khi bạn cần kỉ luật trong dự án của mình, nhưng bất cứ khi nào có thể, chúng tôi sẽ cố gắng hướng dẫn cách sử dụng ESLint và các quy trình tự động khác để đơn giản hóa việc bảo đảm tuân thủ các quy định này.
 
-Finally, we've split rules into four categories:
+Cuối cùng, chúng tôi cũng đã chia các quy tắc thành 4 loại:
 
 
+## Phân loại quy tắc
 
-## Rule Categories
+### Ưu tiên mức A: Cần thiết
 
-### Priority A: Essential
-
-These rules help prevent errors, so learn and abide by them at all costs. Exceptions may exist, but should be very rare and only be made by those with expert knowledge of both JavaScript and Vue.
+Các quy tắc này giúp tránh xảy ra lỗi, vì vậy hãy học và làm theo bằng bất cứ giá nào. Ngoại lệ nếu có cũng sẽ rất hiếm, và chỉ có thể xảy ra với những ai có kiến thức sâu sắc về cả JavaScript và Vue.
 
 ### Priority B: Strongly Recommended
 
