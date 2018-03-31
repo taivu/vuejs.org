@@ -973,24 +973,24 @@ components/
 
 
 
-### Self-closing components <sup data-p="b">rất khuyến khích</sup>
+### Thẻ component tự đóng <sup data-p="b">rất khuyến khích</sup>
 
-**Components with no content should be self-closing in [single-file components](../guide/single-file-components.html), string templates, and [JSX](../guide/render-function.html#JSX) - but never in DOM templates.**
+**Các thẻ component không có nội dung nên tự đóng khi sử dụng trong các [single-file component](../guide/single-file-components.html), string template, và [JSX](../guide/render-function.html#JSX) - nhưng đừng tự đóng trong các DOM template.**
 
-Components that self-close communicate that they not only have no content, but are **meant** to have no content. It's the difference between a blank page in a book and one labeled "This page intentionally left blank." Your code is also cleaner without the unnecessary closing tag.
+Các component tự đóng cho biết rằng chúng không chỉ là không có nội dung, mà hơn thế nữa còn có **chủ đích** là không có nội dung. Việc này cũng giống như sự khác nhau giữa một trang trống và một trang có dòng chữ "Trang này được cố ý để trống" trong một cuốn sách. Không có thẻ đóng thừa cũng giúp cho code của bạn gọn gàng hơn.
 
-Unfortunately, HTML doesn't allow custom elements to be self-closing - only [official "void" elements](https://www.w3.org/TR/html/syntax.html#void-elements). That's why the strategy is only possible when Vue's template compiler can reach the template before the DOM, then serve the DOM spec-compliant HTML.
+Tuy nhiên, HTML không cho phép phần tử tùy chọn (custom element) được tự đóng - chỉ có các phần tử "trống" ([void element](https://www.w3.org/TR/html/syntax.html#void-elements)) là được phép. Chính vì thế, quy tắc này chỉ áp dụng được khi trình biên dịch của Vue có thể động đến template trước để có thể xử lí và chuyển template thành HTML tương thích.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
 #### Không nên
 
 ``` html
-<!-- In single-file components, string templates, and JSX -->
+<!-- Trong single-file component, string template, và JSX -->
 <MyComponent></MyComponent>
 ```
 
 ``` html
-<!-- In DOM templates -->
+<!-- Trong DOM templates -->
 <my-component/>
 ```
 {% raw %}</div>{% endraw %}
@@ -999,47 +999,46 @@ Unfortunately, HTML doesn't allow custom elements to be self-closing - only [off
 #### Nên
 
 ``` html
-<!-- In single-file components, string templates, and JSX -->
+<!-- Trong single-file component, string template, và JSX -->
 <MyComponent/>
 ```
 
 ``` html
-<!-- In DOM templates -->
+<!-- Trong DOM templates -->
 <my-component></my-component>
 ```
 {% raw %}</div>{% endraw %}
 
 
+### Cách viết hoa thường cho tên của component trong template <sup data-p="b">rất khuyến khích</sup>
 
-### Component name casing in templates <sup data-p="b">rất khuyến khích</sup>
+**Trong phần lớn các dự án, tên của component nên luôn là PascalCase trong single-file component và string template, và là kebab-case trong DOM template.**
 
-**In most projects, component names should always be PascalCase in [single-file components](../guide/single-file-components.html) and string templates - but kebab-case in DOM templates.**
+Sơ với kebab-case thì PascalCase có các thế mạnh sau đây:
 
-PascalCase has a few advantages over kebab-case:
+- Trình soạn thảo có thể tự điền tên component trong template, vì PascalCase cũng được dùng trong JavaScript.
+- Về khía cạnh thị giác, `<MyComponent>` nhìn khác biệt rõ rệt với một thẻ HTML hơn là `<my-component>` vì có hai điểm khác nhau (hai chữ cái viết hoa) so với một (dấu gạch ngang). 
+- Nếu bạn sử dụng các phần tử đặc biệt không phải Vue trong template (ví dụ web component), PascalCase vẫn bảo đảm tách biệt component Vue với các phần tử này.
 
-- Editors can autocomplete component names in templates, because PascalCase is also used in JavaScript.
-- `<MyComponent>` is more visually distinct from a single-word HTML element than `<my-component>`, because there are two character differences (the two capitals), rather than just one (a hyphen).
-- If you use any non-Vue custom elements in your templates, such as a web component, PascalCase ensures that your Vue components remain distinctly visible.
+Tuy nhiên, do HTML không phân biệt hoa thường, DOM template vẫn phải dùng kebab-case.
 
-Unfortunately, due to HTML's case insensitivity, DOM templates must still use kebab-case.
-
-Also note that if you've already invested heavily in kebab-case, consistency with HTML conventions and being able to use the same casing across all your projects may be more important than the advantages listed above. In those cases, **using kebab-case everywhere is also acceptable.**
+Ngoài ra, lưu ý rằng nếu bạn đã quen sử dụng kebab-case, tính nhất quán với các quy chuẩn HTML và đồng nhất giữa các dự án của bạn có lẽ là quan trọng hơn những thế mạnh vừa nêu. Trong những trường hợp này, **việc tiếp tục sử dụng kebab-case cũng hoàn toàn có thể chấp nhận được.**
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
 #### Không nên
 
 ``` html
-<!-- In single-file components and string templates -->
+<!-- Trong single-file component và string template -->
 <mycomponent/>
 ```
 
 ``` html
-<!-- In single-file components and string templates -->
+<!-- Trong single-file component và string template -->
 <myComponent/>
 ```
 
 ``` html
-<!-- In DOM templates -->
+<!-- Trong DOM template -->
 <MyComponent></MyComponent>
 ```
 {% raw %}</div>{% endraw %}
@@ -1048,28 +1047,27 @@ Also note that if you've already invested heavily in kebab-case, consistency wit
 #### Nên
 
 ``` html
-<!-- In single-file components and string templates -->
+<!-- Trong single-file component và string template -->
 <MyComponent/>
 ```
 
 ``` html
-<!-- In DOM templates -->
+<!-- Trong DOM template -->
 <my-component></my-component>
 ```
 
-OR
+HOẶC
 
 ``` html
-<!-- Everywhere -->
+<!-- ở bất kì đâu -->
 <my-component></my-component>
 ```
 {% raw %}</div>{% endraw %}
 
 
+### Cách viết hoa thường cho tên của component trong JS/JSX <sup data-p="b">rất khuyến khích</sup>
 
-### Component name casing in JS/JSX <sup data-p="b">rất khuyến khích</sup>
-
-**Component names in JS/[JSX](../guide/render-function.html#JSX) should always be PascalCase, though they may be kebab-case inside strings for simpler applications that only use global component registration through `Vue.component`.**
+**Tên của component trong JS/[JSX](../guide/render-function.html#JSX) nên luôn luôn là PascalCase, tuy rằng bạn cũng có thể dùng kebab-case trong chuỗi nếu là ứng dụng đơn giản chỉ dùng component được đăng kí toàn cục bằng `Vue.component`.**
 
 {% raw %}
 <details>
@@ -1078,12 +1076,13 @@ OR
 </summary>
 {% endraw %}
 
-In JavaScript, PascalCase is the convention for classes and prototype constructors - essentially, anything that can have distinct instances. Vue components also have instances, so it makes sense to also use PascalCase. As an added benefit, using PascalCase within JSX (and templates) allows readers of the code to more easily distinguish between components and HTML elements.
+Trong JavaScript, PascalCase là quy chuẩn cho class và hàm dựng prototype - 
+In JavaScript, PascalCase is the convention for classes and prototype constructors - về bản chất là bất cứ thứ gì có thể khởi tạo đối tượng riêng biệt. Vue component cũng có thể khởi tạo đối tượng, vì thế dùng PascalCase là hợp lí. Ngoài ra, dùng PascalCase trong JSX (và template) cũng giúp người đọc code phân biệt giữ component và thẻ HTML thường được dễ dàng hơn.
 
-However, for applications that use **only** global component definitions via `Vue.component`, we recommend kebab-case instead. The reasons are:
+Tuy nhiên, trong những ứng dụng chỉ dùng component toàn cục được định nghĩa bằng `Vue.component`, chúng tôi lại khuyến khích sử dụng kebab-case. Lí do là:
 
-- It's rare that global components are ever referenced in JavaScript, so following a convention for JavaScript makes less sense.
-- These applications always include many in-DOM templates, where [kebab-case **must** be used](#Component-name-casing-in-templates-strongly-recommended).
+- Component toàn cục hiếm khi được dùng trong JavaScript, vì thế dùng quy ước JavaScript là không hợp lí cho lắm.
+- Các ứng dụng này luôn chứa nhiều DOM template, nơi mà việc dùng kebab-case [là bắc buộc](#Cach-viet-hoa-thuong-cho-ten-cua-component-trong-template-rat-khuyen-khich)
 
 {% raw %}</details>{% endraw %}
 
@@ -1143,12 +1142,11 @@ export default {
 {% raw %}</div>{% endraw %}
 
 
+### Tên component đầy đủ <sup data-p="b">rất khuyến khích</sup>
 
-### Full-word component names <sup data-p="b">rất khuyến khích</sup>
+**Component nên có tên đầy đủ thay vì viết tắt.**
 
-**Component names should prefer full words over abbreviations.**
-
-The autocompletion in editors make the cost of writing longer names very low, while the clarity they provide is invaluable. Uncommon abbreviations, in particular, should always be avoided.
+Chức năng tự điền trong các trình soạn thảo giúp cho việc viết tên dài tốn rất ít công sức, trong khi tính rõ ràng nó mang lại là rất hữu ích. Đặc biệt, đừng bao giờ dùng những từ viết tắt không hay gặp.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
 #### Không nên
@@ -1171,12 +1169,11 @@ components/
 {% raw %}</div>{% endraw %}
 
 
+### Cách viết hoa thường cho tên của prop <sup data-p="b">rất khuyến khích</sup>
 
-### Prop name casing <sup data-p="b">rất khuyến khích</sup>
+**Dùng camelCase khi khai báo prop, kebab-case khi dùng trong template và [JSX](../guide/render-function.html#JSX).**
 
-**Prop names should always use camelCase during declaration, but kebab-case in templates and [JSX](../guide/render-function.html#JSX).**
-
-We're simply following the conventions of each language. Within JavaScript, camelCase is more natural. Within HTML, kebab-case is.
+Chúng ta chỉ đơn giản là đang tuân theo quy ước của từng ngôn ngữ. Trong JavaScript, camelCase nhìn tự nhiên hơn. Trong HTML thì kebab-case lại tự nhiên hơn.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
 #### Không nên
@@ -1207,12 +1204,11 @@ props: {
 {% raw %}</div>{% endraw %}
 
 
+### Phần tử có nhiều thuộc tính <sup data-p="b">rất khuyến khích</sup>
 
-### Multi-attribute elements <sup data-p="b">rất khuyến khích</sup>
+**Các phần tử có nhiều thuộc tính nên được viết thành nhiều dòng, mỗi dòng là một thuộc tính.** 
 
-**Elements with multiple attributes should span multiple lines, with one attribute per line.**
-
-In JavaScript, splitting objects with multiple properties over multiple lines is widely considered a good convention, because it's much easier to read. Our templates and [JSX](../guide/render-function.html#JSX) deserve the same consideration.
+Trong JavaScript, việc viết các object với nhiều property thành nhiều dòng được công nhận rộng rãi vì như thế dễ đọc hơn nhiều. Template và [JSX](../guide/render-function.html#JSX) cũng đáng được xem xét như thế.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
 #### Không nên
@@ -1246,12 +1242,11 @@ In JavaScript, splitting objects with multiple properties over multiple lines is
 {% raw %}</div>{% endraw %}
 
 
+### Biểu thức đơn giản trong template <sup data-p="b">rất khuyến khích</sup>
 
-### Simple expressions in templates <sup data-p="b">rất khuyến khích</sup>
+**Template của component chỉ nên chứa những biểu thức đơn giản. Các biểu thức phức tạp hơn nên được viết thành computed property hoặc method.**
 
-**Component templates should only include simple expressions, with more complex expressions refactored into computed properties or methods.**
-
-Complex expressions in your templates make them less declarative. We should strive to describe _what_ should appear, not _how_ we're computing that value. Computed properties and methods also allow the code to be reused.
+Các biểu thức phức tạp làm cho template trở nên kém rõ ràng mạch lạc. Chúng ta nên mô tả _giá trị nào_ cần hiện ra, thay vì mô tả giá trị ấy được tính toán _thế nào_. Computed property và method cũng giúp cho code có thể sử dụng lại được.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
 #### Không nên
@@ -1269,12 +1264,12 @@ Complex expressions in your templates make them less declarative. We should stri
 #### Nên
 
 ``` html
-<!-- In a template -->
+<!-- Trong template -->
 {{ normalizedFullName }}
 ```
 
 ``` js
-// The complex expression has been moved to a computed property
+// Biểu thức phúc tạp đã được chuyển thành một computed property
 computed: {
   normalizedFullName: function () {
     return this.fullName.split(' ').map(function (word) {
