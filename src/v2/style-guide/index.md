@@ -1246,7 +1246,7 @@ Trong JavaScript, việc viết các object với nhiều property thành nhiề
 
 **Template của component chỉ nên chứa những biểu thức đơn giản. Các biểu thức phức tạp hơn nên được viết thành computed property hoặc method.**
 
-Các biểu thức phức tạp làm cho template trở nên kém rõ ràng mạch lạc. Chúng ta nên mô tả _giá trị nào_ cần hiện ra, thay vì mô tả giá trị ấy được tính toán _thế nào_. Computed property và method cũng giúp cho code có thể sử dụng lại được.
+Các biểu thức phức tạp làm cho template trở nên kém rõ ràng mạch lạc. Chúng ta nên mô tả _giá trị nào_ cần hiện thị, thay vì mô tả giá trị ấy được tính toán _thế nào_. Computed property và method cũng giúp cho code có thể sử dụng lại được.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
 #### Không nên
@@ -1281,10 +1281,9 @@ computed: {
 {% raw %}</div>{% endraw %}
 
 
+### Computed property đơn giản <sup data-p="b">rất khuyến khích</sup>
 
-### Simple computed properties <sup data-p="b">rất khuyến khích</sup>
-
-**Complex computed properties should be split into as many simpler properties as possible.**
+**Các computed property phức tạp nên được tách ra thành càng nhiều property nhỏ hơn càng tốt.**
 
 {% raw %}
 <details>
@@ -1293,21 +1292,21 @@ computed: {
 </summary>
 {% endraw %}
 
-Simpler, well-named computed properties are:
+Computed property đơn giản và được đặt tên đúng đắn thì:
 
-- __Easier to test__
+- __Dễ test hơn__
 
-  When each computed property contains only a very simple expression, with very few dependencies, it's much easier to write tests confirming that it works correctly.
+  Khi mỗi computed property chỉ chứa một biểu thức đơn giản, với rất ít phụ thuộc (dependency), việc viết test để bảo đảm property hoạt động đúng trở nên dễ dàng hơn nhiều.
 
-- __Easier to read__
+- __Dễ đọc hơn__
 
-  Simplifying computed properties forces you to give each value a descriptive name, even if it's not reused. This makes it much easier for other developers (and future you) to focus in on the code they care about and figure out what's going on.
+  Việc đơn giản hóa computed property bắt buộc bạn phải đặt cho mỗi giá trị một cái tên có tính mô tả, cho dù property đó có thể không được dùng lại. Điều này giúp cho các lập trình viên khác (và cả bạn trong tương lai) tập trung vào những dòng code họ quan tâm và hiểu được chuyện gì đang xảy ra.
 
-- __More adaptable to changing requirements__
+- __Dễ thích nghi hơn với các thay đổi trong yêu cầu kĩ thuật__
 
-  Any value that can be named might be useful to the view. For example, we might decide to display a message telling the user how much money they saved. We might also decide to calculate sales tax, but perhaps display it separately, rather than as part of the final price.
+  Mỗi giá trị được đặt tên đều có thể trở nên có ích trong view. Ví dụ, chúng ta có thể quyết định hiển thị một thông điệp thông báo cho người dùng biết họ đã tiết kiệm được bao nhiêu tiền. Chúng ta cũng có thể quyết định tính thuế bán hàng, nhưng có lẽ là hiển thị khoản thuế này riêng biệt, thay vì là một phần của tổng giá.
 
-  Small, focused computed properties make fewer assumptions about how information will be used, so require less refactoring as requirements change.
+  Với các computed property nhỏ và tập trung, chúng ta đặt ít giả định hơn về cách sử dụng thông tin, nhờ đó cần sửa chữa ít hơn khi yêu cầu kĩ thuật thay đổi.
 
 {% raw %}</details>{% endraw %}
 
@@ -1346,12 +1345,11 @@ computed: {
 {% raw %}</div>{% endraw %}
 
 
+### Đặt giá trị của thuộc tính HTML trong dấu nháy <sup data-p="b">rất khuyến khích</sup>
 
-### Quoted attribute values <sup data-p="b">rất khuyến khích</sup>
+**Các thuộc tính HTML không rỗng nên luôn được đặt trong dấu nháy (nháy đơn nếu JS dùng nháy kép và ngược lại).**
 
-**Non-empty HTML attribute values should always be inside quotes (single or double, whichever is not used in JS).**
-
-While attribute values without any spaces are not required to have quotes in HTML, this practice often leads to _avoiding_ spaces, making attribute values less readable.
+Tuy rằng giá trị của các thuộc tính HTML không cần phải được đặt trong dấu nháy nếu không chứa khoảng trống, cách làm này thường dẫn đến việc _tránh dùng_ khoảng trống, khiến các giá trị này khó đọc hơn.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
 #### Không nên
@@ -1379,9 +1377,9 @@ While attribute values without any spaces are not required to have quotes in HTM
 
 
 
-### Directive shorthands <sup data-p="b">rất khuyến khích</sup>
+### Dạng viết tắt của directive <sup data-p="b">rất khuyến khích</sup>
 
-**Directive shorthands (`:` for `v-bind:` and `@` for `v-on:`) should be used always or never.**
+**Bạn nên hoặc luôn dùng, hoặc không bao giờ dùng dạng viết tắt của directive (`:` cho `v-bind:` và `@` cho `v-on:`).**
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
 #### Không nên
@@ -1435,112 +1433,109 @@ While attribute values without any spaces are not required to have quotes in HTM
 
 
 
-
-## Priority C Rules: Recommended (Minimizing Arbitrary Choices and Cognitive Overhead)
-
+## Mức ưu tiên C: Khuyến khích (Giảm thiểu các lựa chọn tùy tiện và công sức suy nghĩ)
 
 
-### Component/instance options order <sup data-p="c">recommended</sup>
+### Thứ tự của các tùy chọn khởi tạo component/instance <sup data-p="c">khuyến khích</sup>
 
-**Component/instance options should be ordered consistently.**
+**Các từ chọn khởi tạo component/instance nên được sắp xếp một cách nhất quán.**
 
-This is the default order we recommend for component options. They're split into categories, so you'll know where to add new properties from plugins.
+Sau đây là thứ tự mặc định mà chúng tôi khuyết khích áp dụng cho các tùy chọn khởi tạo. Các tùy chọn này được xếp theo thể loại, giúp bạn biết nên thêm vào đâu.
 
-1. **Side Effects** (triggers effects outside the component)
+1. **Hiệu ứng phụ** (kích hoạt các hiệu ứng bên ngoài component)
   - `el`
 
-2. **Global Awareness** (requires knowledge beyond the component)
+2. **Nhận thức toàn cục** (cần các kiến thức vượt quá phạm vi của component)
   - `name`
   - `parent`
 
-3. **Component Type** (changes the type of the component)
+3. **Loại component** (thay đổi loại component)
   - `functional`
 
-4. **Template Modifiers** (changes the way templates are compiled)
+4. **Modifier dành cho template** (thay đổi cách biên dịch một template)
   - `delimiters`
   - `comments`
 
-5. **Template Dependencies** (assets used in the template)
+5. **Thành phần phụ thuộc trong template** (các thành phần được dùng trong template)
   - `components`
   - `directives`
   - `filters`
 
-6. **Composition** (merges properties into the options)
+6. **Biên soạn** (sáp nhập các thuộc tính vào trong các tùy chọn)
   - `extends`
   - `mixins`
 
-7. **Interface** (the interface to the component)
+7. **Giao diện** (giao diện của component)
   - `inheritAttrs`
   - `model`
   - `props`/`propsData`
 
-8. **Local State** (local reactive properties)
+8. **Trạng thái cục bộ** (các thuộc tính reactive cấp cục bộ)
   - `data`
   - `computed`
 
-9. **Events** (callbacks triggered by reactive events)
+9. **Sự kiện** (các hàm callback được gọi bởi các sự kiện reactive)
   - `watch`
-  - Lifecycle Events (in the order they are called)
+  - Các sự kiện vòng đời (theo thứ tự trong vòng đời)
 
-10. **Non-Reactive Properties** (instance properties independent of the reactivity system)
+10. **Thuộc tính không reactive** (các thuộc tính đối tượng độc lập với hệ thống reactive)
   - `methods`
 
-11. **Rendering** (the declarative description of the component output)
+11. **Hiển thị** (mô tả tường minh cho output của component)
   - `template`/`render`
   - `renderError`
 
 
+### Thứ tự thuộc tính của phần tử <sup data-p="c">khuyến khích</sup>
 
-### Element attribute order <sup data-p="c">recommended</sup>
+**Các thuộc tính của phần tử (bao gồm component) nên được sắp xếp một cách nhất quán.**
 
-**The attributes of elements (including components) should be ordered consistently.**
+Sau đây là thứ tự mặc định mà chúng tôi khuyến khích áp dụng cho thuộc tính của các phần tử. Các thuộc tính này được xếp theo thể loại, giúp bạn biết nên thêm thuộc tính và directive vào đâu.
 
-This is the default order we recommend for component options. They're split into categories, so you'll know where to add custom attributes and directives.
-
-1. **Definition** (provides the component options)
+1. **Định nghĩa** (cung cấp tùy chọn cho component)
   - `is`
 
-2. **List Rendering** (creates multiple variations of the same element)
+2. **Render danh sách** (tạo nhiều dạng khác nhau của cùng một phần tử)
   - `v-for`
 
-3. **Conditionals** (whether the element is rendered/shown)
+3. **Điều kiện** (nên hay không hiển thị / render phần tử)
   - `v-if`
   - `v-else-if`
   - `v-else`
   - `v-show`
   - `v-cloak`
 
-4. **Render Modifiers** (changes the way the element renders)
+4. **Modifier cho render** (thay đổi cách render một element)
   - `v-pre`
   - `v-once`
 
-5. **Global Awareness** (requires knowledge beyond the component)
+5. **Nhận thức toàn cục** (cần các kiến thức vượt quá phạm vi của component)
   - `id`
 
-6. **Unique Attributes** (attributes that require unique values)
+6. **Thuộc tính không trùng lặp** (các thuộc tính cần giá trị không trùng lặp)
   - `ref`
   - `key`
   - `slot`
 
-7. **Two-Way Binding** (combining binding and events)
+7. **Ràng buộc hai chiều** (kết hợp ràng buộc và sự kiện)
   - `v-model`
 
-8. **Other Attributes** (all unspecified bound & unbound attributes)
+8. **Các thuộc tính khác** (tất cả các thuộc tính ràng buộc và không ràng buộc khác)
 
-9. **Events** (component event listeners)
+9. **Sự kiện** (các hàm xử lí sự kiện cho component)
   - `v-on`
 
-10. **Content** (overrides the content of the element)
+10. **Nội dung** (ghi đè nội dung của phần tử)
   - `v-html`
   - `v-text`
 
 
 
-### Empty lines in component/instance options <sup data-p="c">recommended</sup>
+### Dòng trống trong tùy chọn của component/instance <sup data-p="c">khuyến khích</sup>
 
-**You may want to add one empty line between multi-line properties, particularly if the options can no longer fit on your screen without scrolling.**
+**Bạn có thể thêm vào một dòng trống giữa các property gồm nhiều dòng, đặc biệt là khi các tùy chọn không còn chứa đủ trên màn hình mà không phải cuộn.** 
 
-When components begin to feel cramped or difficult to read, adding spaces between multi-line properties can make them easier to skim again. In some editors, such as Vim, formatting options like this can also make them easier to navigate with the keyboard.
+Khi các component trở nên chật chội và khó đọc, thêm khoảng trắng giữa các property có thể giúp chúng trở nên dễ đọc trở lại. Trong một số trình soạn thảo, ví dụ Vim, kiểu định dạng như thế này còn có thể giúp việc di chuyển bằng bàn phím được dễ dàng hơn.
 
 {% raw %}<div class="style-example example-good">{% endraw %}
 #### Nên
@@ -1573,8 +1568,8 @@ computed: {
 ```
 
 ``` js
-// No spaces are also fine, as long as the component
-// is still easy to read and navigate.
+// Nếu component vẫn còn dễ đọc và di chuyển
+// thì không dùng khoảng trắng cũng không sao.
 props: {
   value: {
     type: String,
@@ -1599,10 +1594,9 @@ computed: {
 {% raw %}</div>{% endraw %}
 
 
+### Thứ tự của các phần tử cấp cao nhất trong single-file component <sup data-p="c">khuyến khích</sup>
 
-### Single-file component top-level element order <sup data-p="c">recommended</sup>
-
-**[Single-file components](../guide/single-file-components.html) should always order `<script>`, `<template>`, and `<style>` tags consistently, with `<style>` last, because at least one of the other two is always necessary.**
+**[Single-file component](../guide/single-file-components.html) nên sắp xếp các thẻ `<script>`, `<template>`, và `<style>` nhất quán, với `<style>` đặt cuối cùng, vì ít nhất một trong hai thẻ `<script>` và `<template>` là bắt buộc.**
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
 #### Không nên
