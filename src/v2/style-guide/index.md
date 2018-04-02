@@ -3,7 +3,7 @@ title: Hướng dẫn về phong cách viết
 type: style-guide
 ---
 
-Đây là bản hướng dẫn về phong cách viết chính thức dành cho code Vue. Nếu bạn dùng Vue trong dự án của mình, bản hướng dẫn này sẽ là một tham chiếu hữu ích giúp tránh xảy ra lỗi, anti-pattern, hoặc phí thời gian vào những tranh cãi không đáng có. Tất nhiên, chúng tôi cũng tin rằng không có style guide nào là hoàn hảo cho tất cả các team hoặc dự án, vì thế bạn nên điều chỉnh tùy theo kinh nghiệm, thiết lập kĩ thuật, và khả năng cá nhân của từng người.  
+Đây là bản hướng dẫn về phong cách viết (style guide) chính thức dành cho code Vue. Nếu bạn dùng Vue trong dự án của mình, bản hướng dẫn này sẽ là một tham chiếu hữu ích giúp tránh xảy ra lỗi, anti-pattern, hoặc phí thời gian vào những tranh cãi không đáng có. Tất nhiên, chúng tôi cũng tin rằng không có style guide nào là hoàn hảo cho tất cả các team hoặc dự án, vì thế bạn nên điều chỉnh tùy theo kinh nghiệm, thiết lập kĩ thuật, và khả năng cá nhân của từng người.  
 
 Chúng tôi cũng sẽ tránh các đề nghị về JavaScript về HTML nói chung. Việc bạn dùng hay không dùng dấu chấm phẩy, dùng nháy đơn hay dấu kép cho thuộc tính HTML, đối với chúng tôi là không quan trọng. Tuy nhiên cũng sẽ có một số ngoại lệ khi chúng tôi nhận thấy một kiểu mẫu (pattern) cụ thể nào đó có thể có ích hơn trong ngữ cảnh của Vue.
 
@@ -30,7 +30,7 @@ Chúng ta có thể tự ý chọn một trong nhiều lựa chọn tốt ngang 
 2. có thể copy và paste phần lớn code của cộng đồng mà không cần phải chỉnh sửa gì
 3. dễ tuyển được người đã quen với phong cách viết code mà bạn muốn, ít nhất là khi dùng Vue
 
-### Mức ưu tiên D: Cẩn trọng khi dùng
+### Mức ưu tiên D: Trận trọng khi dùng
 
 Một số tính năng của Vue được phát triển để hỗ trợ trong những tình huống hiếm gặp (edge case) hoặc để giúp cho việc nâng cấp một dự án cũ được dễ dàng hơn. Những tính năng này nếu lạm dụng có thể làm cho code của bạn trở nên khó bảo trì, hoặc thậm chí trở thành nguồn gây ra lỗi. Các quy tắc trong mức ưu tiên D giải thích thêm về những tính năng có nguy cơ rủi ro này, đồng thời hướng dẫn cho bạn biết nên tránh ở đâu và lúc nào.
 
@@ -173,7 +173,7 @@ new Vue({
 
 ### Định nghĩa cho prop <sup data-p="a">thiết yếu</sup>
 
-**Đĩnh nghĩa cho prop càng chi tiết càng tốt.**
+**Định nghĩa cho prop càng chi tiết càng tốt.**
 
 Trong code được commit, định nghĩa cho prop nên chi tiết đến mức có thể. Ít nhất bạn phải chỉ định kiểu dữ liệu của prop.
 
@@ -266,7 +266,7 @@ Sau đó bạn sắp xếp danh sách này theo thứ tự chữ cái. Khi cập
 
 Vấn đề là, có những trường hợp chúng ta không muốn xóa đi những phần tử mà cuối cùng vẫn sẽ tồn tại trong DOM. Ví dụ, bạn có thể muốn sử dụng `<transition-group>` để animate việc sắp xếp danh sách, hoặc muốn giữ focus nếu phần tử được render là một `<input>`. Trong những trường hợp này, thêm vào một `key` không trùng lặp cho mỗi item (ví dụ `:key="todo.id"`) sẽ hướng dẫn cho Vue xử lí theo hướng dễ đoán hơn.
 
-Kinh nghiệm của chúng tôi cho thấy, tốt nhất là _luôn luôn_ dùng một `key` không trùng lặp, sau đó đơn giản là bạn sẽ không bao giờ phải quan tâm đến các trường hợp hiếm gặp nữa. Sau đó, đối với những trường hợp mà hiệu suất là tối quan trọng và tính bất biến của object là không cần thiết, bạn có thể tạo một ngoại lệ có ý thức.
+Kinh nghiệm của chúng tôi cho thấy, tốt nhất là _luôn luôn_ dùng một `key` không trùng lặp, sau đó đơn giản là bạn sẽ không bao giờ phải quan tâm đến các trường hợp hiếm gặp nữa. Sau đó, đối với những trường hợp mà hiệu suất là tối quan trọng và tính bất biến của object là không cần thiết, bạn có thể tạo biệt lệ một cách có ý thức.
 
 {% raw %}</details>{% endraw %}
 
@@ -459,7 +459,7 @@ Bằng cách chuyển `v-if` lên phần tử cha (`ul`), chúng ta không còn 
 
 ### Thiết lập phạm vi cho `style` của component <sup data-p="a">thiết yếu</sup>
 
-**Đối với các ứng dụng Vue, `style` trong component `App` cấp cao nhất và các component layout có thể có ảnh hưởng toàn cục, nhưng tất cả các component khác luôn luôn nên được thiết lập phạm vi`.**
+**Đối với các ứng dụng Vue, `style` trong component `App` cấp cao nhất và các component layout có thể có ảnh hưởng toàn cục, nhưng tất cả các component khác luôn luôn nên được thiết lập phạm vi.**
 
 Quy tắc này chỉ áp dụng cho [single-file component](../guide/single-file-components.html). Chúng ta có thể đạt được điều này bằng cách dùng [thuộc tính `scoped`](https://vue-loader.vuejs.org/en/features/scoped-css.html), [CSS module](https://vue-loader.vuejs.org/en/features/css-modules.html), một kĩ thuật quản lí CSS dựa trên tên class như [BEM](http://getbem.com/), hoặc một quy ước / thư viện khác.
 
@@ -634,7 +634,7 @@ var myGreatMixin = {
 
 ### Các file component <sup data-p="b">rất khuyến khích</sup>
 
-**Nếu hệ thống build hỗ trợ nối file, mỗi component nên nằm trong một file riêng**
+**Nếu hệ thống build hỗ trợ nối file, mỗi component nên nằm trong một file riêng.**
 
 Việc này giúp bạn mau chóng tìm ra một component khi cần chỉnh sửa hoặc xem lại cách dùng component đó.
 
@@ -674,7 +674,7 @@ components/
 
 **Toàn bộ tên của các [file component](../guide/single-file-components.html) chỉ nên được đặt theo quy chuẩn hoặc là PascalCase hoặc là kebab-case.**
 
-PascalCase hoạt động tốt nhất với tính năng tự điền (autocomplete) của các trình soạn thảo, vì nó nhất quán với các chúng ta tham chiếu đến các component trong JS(X) và template, bất cứ khi nào có thể. Tuy nhiên, vì tên file trộn lẫn cả chữ hoa và chữ thường đôi khi tạo phiền toái trên các hệ thống phân biệt hoa thường, kebab-case cũng hoàn toàn có thể chấp nhận được.
+PascalCase hoạt động tốt nhất với tính năng tự điền (autocomplete) của các trình soạn thảo, vì nó nhất quán với cách chúng ta tham chiếu đến các component trong JS(X) và template, bất cứ khi nào có thể. Tuy nhiên, vì tên file trộn lẫn cả chữ hoa và chữ thường đôi khi tạo phiền toái trên các hệ thống phân biệt hoa thường, kebab-case cũng hoàn toàn có thể chấp nhận được.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
 #### Không nên
@@ -723,7 +723,7 @@ Những component này đặt nền móng cho style và hành vi cho ứng dụn
 - các component nền tảng khác, và
 - các component UI của bên thứ 3
 
-chứ không bao giờ chứa trạng thái toàn cục (ví dụ từ một store Vuex).
+chứ không bao giờ chứa trạng thái toàn cục (ví dụ từ một store vuex).
 
 Tên của các component này thường chứa tên của phần tử được bọc bên trong (ví dụ `BaseButton`, `BaseTable`), trừ phi không có phần tử nào tồn tại cho mục đích cụ thể của nó (chẳng hạn `BaseIcon` - không có phần tử HTML nào tên là `icon`). Nếu bạn xây dựng các component tương tự dành cho một ngữ cảnh cụ thể nào đó, các component này gần như luôn luôn dùng các base component (ví dụ `BaseButton` có thể được dùng trong `ButtonSubmit`).
 
@@ -788,7 +788,7 @@ components/
 
 ### Tên của các component dạng single-instance <sup data-p="b">rất khuyến khích</sup>
 
-**Tên của các component dạng single-instance (chỉ có một đối tượng được khởi tạo trong toàn bộ vòng đời của ứng dụng) nên bắt đầu với mạo từ xác định `The`, đánh dấu việc "chỉ có thể có một."**
+**Tên của các component dạng single-instance (chỉ có một đối tượng được khởi tạo trong toàn bộ vòng đời của ứng dụng) nên bắt đầu với mạo từ xác định `The`, đánh dấu tính chất "một và chỉ một mà thôi."**
 
 Điều này không có nghĩa là một component dạng này chỉ được dùng trên một trang duy nhất, mà là chỉ được dùng một lần __mỗi trang__. Các component này không bao giờ nhận vào các prop, vì prop là dấu hiệu của một component tái sử dụng lại được. 
 
@@ -848,7 +848,7 @@ components/
 |- TodoList.vue
 ```
 
-Tuy nhiên, điều này không được khuyến khích, vì nó tạo ra: 
+Tuy nhiên, chúng tôi không khuyến khích cách làm này, vì nó tạo ra: 
 
 - Nhiều file có tên trùng nhau hoặc tương tự nhau, khiến cho việc chuyển đổi nhanh file trình soạn thảo trở nên khó khăn hơn.
 - Nhiều thư mục lồng nhau, khiến cho việc duyệt qua các component trong sidebar của trình soạn thảo trở nên chậm chạp.
@@ -903,7 +903,7 @@ components/
 
 Có thể bạn đang tự hỏi:
 
-> "Tại sao lại dùng ngôn ngữ kém tự nhiên khi đặt tên cho component?"
+> "Tại sao lại dùng cách nói kém tự nhiên khi đặt tên cho component?"
 
 Trong tiếng Anh tự nhiên, tính từ và các từ mô tả thường đi trước danh từ, trừ phi có những từ nối. Ví dụ: 
 
@@ -1076,13 +1076,12 @@ HOẶC
 </summary>
 {% endraw %}
 
-Trong JavaScript, PascalCase là quy chuẩn cho class và hàm dựng prototype - 
-In JavaScript, PascalCase is the convention for classes and prototype constructors - về bản chất là bất cứ thứ gì có thể khởi tạo đối tượng riêng biệt. Vue component cũng có thể khởi tạo đối tượng, vì thế dùng PascalCase là hợp lí. Ngoài ra, dùng PascalCase trong JSX (và template) cũng giúp người đọc code phân biệt giữ component và thẻ HTML thường được dễ dàng hơn.
+Trong JavaScript, PascalCase là quy chuẩn cho class và hàm dựng prototype - về bản chất là bất cứ thứ gì có thể khởi tạo đối tượng riêng biệt. Vue component cũng có thể khởi tạo đối tượng, vì thế dùng PascalCase là hợp lí. Ngoài ra, dùng PascalCase trong JSX (và template) cũng giúp người đọc code phân biệt giữa component và thẻ HTML thường được dễ dàng hơn.
 
 Tuy nhiên, trong những ứng dụng chỉ dùng component toàn cục được định nghĩa bằng `Vue.component`, chúng tôi lại khuyến khích sử dụng kebab-case. Lí do là:
 
 - Component toàn cục hiếm khi được dùng trong JavaScript, vì thế dùng quy ước JavaScript là không hợp lí cho lắm.
-- Các ứng dụng này luôn chứa nhiều DOM template, nơi mà việc dùng kebab-case [là bắc buộc](#Cach-viet-hoa-thuong-cho-ten-cua-component-trong-template-rat-khuyen-khich)
+- Các ứng dụng này luôn chứa nhiều DOM template, nơi mà việc dùng kebab-case [là bắc buộc](#Cach-viet-hoa-thuong-cho-ten-cua-component-trong-template-rat-khuyen-khich).
 
 {% raw %}</details>{% endraw %}
 
@@ -1146,7 +1145,7 @@ export default {
 
 **Component nên có tên đầy đủ thay vì viết tắt.**
 
-Chức năng tự điền trong các trình soạn thảo giúp cho việc viết tên dài tốn rất ít công sức, trong khi tính rõ ràng nó mang lại là rất hữu ích. Đặc biệt, đừng bao giờ dùng những từ viết tắt không hay gặp.
+Chức năng tự điền trong các trình soạn thảo giúp cho việc viết tên dài tốn rất ít công sức, trong khi sự tường minh mà nó mang lại là rất hữu ích. Đặc biệt, đừng bao giờ dùng những từ viết tắt hiếm gặp.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
 #### Không nên
@@ -1433,14 +1432,14 @@ Tuy rằng giá trị của các thuộc tính HTML không cần phải được
 
 
 
-## Mức ưu tiên C: Khuyến khích (Giảm thiểu các lựa chọn tùy tiện và công sức suy nghĩ)
+## Các quy tắc mức C: Khuyến khích (giảm thiểu các lựa chọn tùy tiện và công sức suy nghĩ)
 
 
 ### Thứ tự của các tùy chọn khởi tạo component/instance <sup data-p="c">khuyến khích</sup>
 
 **Các từ chọn khởi tạo component/instance nên được sắp xếp một cách nhất quán.**
 
-Sau đây là thứ tự mặc định mà chúng tôi khuyết khích áp dụng cho các tùy chọn khởi tạo. Các tùy chọn này được xếp theo thể loại, giúp bạn biết nên thêm vào đâu.
+Sau đây là thứ tự mặc định mà chúng tôi khuyết khích áp dụng cho các tùy chọn khởi tạo. Các tùy chọn này được xếp theo thể loại, giúp bạn biết nên thêm property vào đâu.
 
 1. **Hiệu ứng phụ** (kích hoạt các hiệu ứng bên ngoài component)
   - `el`
@@ -1650,22 +1649,22 @@ computed: {
 
 
 
-## Priority D Rules: Use with Caution (Potentially Dangerous Patterns)
+## Các quy tắc mức D: Thận trọng khi dùng (có thể gây ra lỗi)
 
 
 
-### `v-if`/`v-if-else`/`v-else` without `key` <sup data-p="d">use with caution</sup>
+### `v-if`/`v-if-else`/`v-else` không có `key` <sup data-p="d">thận trọng khi dùng</sup>
 
-**It's usually best to use `key` with `v-if` + `v-else`, if they are the same element type (e.g. both `<div>` elements).**
+**Tốt nhất là dùng `key` với `v-if` + `v-else`, nếu các phần tử là cùng loại (ví dụ cùng là `<div>`).**
 
-By default, Vue updates the DOM as efficiently as possible. That means when switching between elements of the same type, it simply patches the existing element, rather than removing it and adding a new one in its place. This can have [unintended side effects](https://jsfiddle.net/chrisvfritz/bh8fLeds/) if these elements should not actually be considered the same.
+Mặc định, Vue cố gắng cập nhật DOM càng hiệu quả càng tốt. Điều này có nghĩa là khi chuyển đổi giữa các phần tử cùng loại, Vue đơn giản chỉ chỉnh sửa phần tử hiện tại, thay vì gỡ bỏ rồi thêm một phần tử mới vào thay thế. Điều này có thể tạo ra [các hiệu ứng phụ ngoài ý muốn](https://jsfiddle.net/chrisvfritz/bh8fLeds/) nếu các phần tử này không nên được xem là như nhau. 
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
 #### Không nên
 
 ``` html
 <div v-if="error">
-  Error: {{ error }}
+  Lỗi: {{ error }}
 </div>
 <div v-else>
   {{ results }}
@@ -1681,7 +1680,7 @@ By default, Vue updates the DOM as efficiently as possible. That means when swit
   v-if="error"
   key="search-status"
 >
-  Error: {{ error }}
+  Lỗi: {{ error }}
 </div>
 <div
   v-else
@@ -1693,7 +1692,7 @@ By default, Vue updates the DOM as efficiently as possible. That means when swit
 
 ``` html
 <p v-if="error">
-  Error: {{ error }}
+  Lỗi: {{ error }}
 </p>
 <div v-else>
   {{ results }}
@@ -1702,12 +1701,11 @@ By default, Vue updates the DOM as efficiently as possible. That means when swit
 {% raw %}</div>{% endraw %}
 
 
+### Selector dạng phần tử với `scoped` <sup data-p="d">thận trọng khi dùng</sup>
 
-### Element selectors with `scoped` <sup data-p="d">use with caution</sup>
+**Khi dùng `scoped`, nên tránh dùng selector dạng phần tử.**
 
-**Element selectors should be avoided with `scoped`.**
-
-Prefer class selectors over element selectors in `scoped` styles, because large numbers of element selectors are slow.
+Khi dùng `style` có `scoped`, nên ưu tiên dùng selector dạng class (ví dụ `.btn-close`) thay cho dạng phần tử (ví dụ `button`), vì quá nhiều selector dạng phần tử có thể làm chậm ứng dụng.
 
 {% raw %}
 <details>
@@ -1716,9 +1714,9 @@ Prefer class selectors over element selectors in `scoped` styles, because large 
 </summary>
 {% endraw %}
 
-To scope styles, Vue adds a unique attribute to component elements, such as `data-v-f3f3eg9`. Then selectors are modified so that only matching elements with this attribute are selected (e.g. `button[data-v-f3f3eg9]`).
+Để tạo phạm vi (scope) cho style, Vue thêm một thuộc tính độc nhất cho các phần tử trong component, ví dụ như `data-v-2cb7c070`. Sau đó các selector được chỉnh sửa sao cho chỉ có những phần tử có thuộc tính này được chọn (ví dụ `button[data-v-2cb7c070]`).
 
-The problem is that large numbers of [element-attribute selectors](http://stevesouders.com/efws/css-selectors/csscreate.php?n=1000&sel=a%5Bhref%5D&body=background%3A+%23CFD&ne=1000) (e.g. `button[data-v-f3f3eg9]`) will be considerably slower than [class-attribute selectors](http://stevesouders.com/efws/css-selectors/csscreate.php?n=1000&sel=.class%5Bhref%5D&body=background%3A+%23CFD&ne=1000) (e.g. `.btn-close[data-v-f3f3eg9]`), so class selectors should be preferred whenever possible.
+Vấn đề là, nếu dùng ở số lượng lớn, [selector dạng phần tử](http://stevesouders.com/efws/css-selectors/csscreate.php?n=1000&sel=a%5Bhref%5D&body=background%3A+%23CFD&ne=1000) (ví dụ `button[data-v-2cb7c070]`) sẽ chậm hơn nhiều so với [selector dạng class](http://stevesouders.com/efws/css-selectors/csscreate.php?n=1000&sel=.class%5Bhref%5D&body=background%3A+%23CFD&ne=1000) (ví dụ `.btn-close[data-v-2cb7c070]`). Vì thế, hãy dùng selector dạng class bất cứ khi nào có thể.
 
 {% raw %}</details>{% endraw %}
 
@@ -1727,7 +1725,7 @@ The problem is that large numbers of [element-attribute selectors](http://steves
 
 ``` html
 <template>
-  <button>X</button>
+  <button>×</button>
 </template>
 
 <style scoped>
@@ -1743,7 +1741,7 @@ button {
 
 ``` html
 <template>
-  <button class="btn btn-close">X</button>
+  <button class="btn btn-close">×</button>
 </template>
 
 <style scoped>
@@ -1756,13 +1754,13 @@ button {
 
 
 
-### Implicit parent-child communication <sup data-p="d">use with caution</sup>
+### Giao tiếp ngầm giữa cha và con <sup data-p="d">thận trọng khi dùng</sup>
 
-**Props and events should be preferred for parent-child component communication, instead of `this.$parent` or mutating props.**
+**Giao tiếp giữa các component cha và con nên được thực hiện bằng prop và sự kiện thay vì sử dụng `this.$parent` hoặc thay đổi prop.**
 
-An ideal Vue application is props down, events up. Sticking to this convention makes your components much easier to understand. However, there are edge cases where prop mutation or `this.$parent` can simplify two components that are already deeply coupled.
+Một ứng dụng Vue lí tưởng tuân thủ quy tắc "props down, events up" (thuộc tính xuống, sự kiện lên). Việc này giúp component của bạn rõ ràng hơn. Tuy nhiên, cũng có những trường hợp ngoại lệ, mà trong đó thay đổi prop hoặc sử dụng `this.$parent` có thể đơn giản hóa hai component đang gắn kết chặt chẽ với nhau.
 
-The problem is, there are also many _simple_ cases where these patterns may offer convenience. Beware: do not be seduced into trading simplicity (being able to understand the flow of your state) for short-term convenience (writing less code).
+Vấn đề là, cũng có rất nhiều trường hợp _đơn giản_ mà những cách làm này tỏ ra rất tiện lợi. Hãy cẩn thận: đừng đánh đổi sự đơn giản (khả năng đọc hiểu flow của trạng thái) để lấy sự tiện lợi ngắn hạn (viết ít code) này.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
 #### Không nên
@@ -1799,7 +1797,7 @@ Vue.component('TodoItem', {
     <span>
       {{ todo.text }}
       <button @click="removeTodo">
-        X
+        × 
       </button>
     </span>
   `
@@ -1839,7 +1837,7 @@ Vue.component('TodoItem', {
     <span>
       {{ todo.text }}
       <button @click="$emit('delete')">
-        X
+        ×
       </button>
     </span>
   `
@@ -1849,11 +1847,11 @@ Vue.component('TodoItem', {
 
 
 
-### Non-flux state management <sup data-p="d">use with caution</sup>
+### Quản lí trạng thái không theo kiến trúc flux <sup data-p="d">thận trọng khi dùng</sup>
 
-**[Vuex](https://github.com/vuejs/vuex) should be preferred for global state management, instead of `this.$root` or a global event bus.**
+**Nên dùng [vuex](https://github.com/vuejs/vuex) để quản lí trạng thái toàn cục thay vì sử dụng `this.$root` hoặc một event bus.**
 
-Managing state on `this.$root` and/or using a [global event bus](https://vuejs.org/v2/guide/migration.html#dispatch-and-broadcast-replaced) can be convenient for very simple cases, but are not appropriate for most applications. Vuex offers not only a central place to manage state, but also tools for organizing, tracking, and debugging state changes.
+Quản lí trạng thái của `this.$root` và/hoặc dùng một event bus toàn cục có thể tiện trong những trường hợp đơn giản, nhưng không phù hợp với phần lớn các ứng dụng. Chẳng những cung cấp một địa điểm tập trung để quản lí trạng thái, vuex còn hỗ trợ bạn với các công cụ để quản lí, track, và debug các thay đổi diễn ra.
 
 {% raw %}</details>{% endraw %}
 
