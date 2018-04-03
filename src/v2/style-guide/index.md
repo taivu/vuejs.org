@@ -5,7 +5,7 @@ type: style-guide
 
 Đây là bản hướng dẫn về phong cách viết (style guide) chính thức dành cho code Vue. Nếu bạn dùng Vue trong dự án của mình, bản hướng dẫn này sẽ là một tham chiếu hữu ích giúp tránh xảy ra lỗi, anti-pattern, hoặc phí thời gian vào những tranh cãi không đáng có. Tất nhiên, chúng tôi cũng tin rằng không có style guide nào là hoàn hảo cho tất cả các team hoặc dự án, vì thế bạn nên điều chỉnh tùy theo kinh nghiệm, thiết lập kĩ thuật, và khả năng cá nhân của từng người.  
 
-Chúng tôi cũng sẽ tránh các đề nghị về JavaScript về HTML nói chung. Việc bạn dùng hay không dùng dấu chấm phẩy, dùng nháy đơn hay dấu kép cho thuộc tính HTML, đối với chúng tôi là không quan trọng. Tuy nhiên cũng sẽ có một số ngoại lệ khi chúng tôi nhận thấy một kiểu mẫu (pattern) cụ thể nào đó có thể có ích hơn trong ngữ cảnh của Vue.
+Chúng tôi cũng sẽ tránh các đề nghị về JavaScript và HTML nói chung. Việc bạn dùng hay không dùng dấu chấm phẩy, dùng nháy đơn hay dấu kép cho thuộc tính HTML, đối với chúng tôi là không quan trọng. Tuy nhiên cũng sẽ có một số ngoại lệ khi chúng tôi nhận thấy một kiểu mẫu (pattern) cụ thể nào đó có thể có ích hơn trong ngữ cảnh của Vue.
 
 > **Sắp tới chúng tôi cũng sẽ cung cấp gợi ý về các quy định bắt buộc.** Đôi khi bạn cần kỉ luật trong dự án của mình, nhưng bất cứ khi nào có thể, chúng tôi sẽ cố gắng hướng dẫn cách sử dụng ESLint và các quy trình tự động khác để đơn giản hóa việc bảo đảm tuân thủ các quy định này.
 
@@ -30,7 +30,7 @@ Chúng ta có thể tự ý chọn một trong nhiều lựa chọn tốt ngang 
 2. có thể copy và paste phần lớn code của cộng đồng mà không cần phải chỉnh sửa gì
 3. dễ tuyển được người đã quen với phong cách viết code mà bạn muốn, ít nhất là khi dùng Vue
 
-### Mức ưu tiên D: Trận trọng khi dùng
+### Mức ưu tiên D: Thận trọng khi dùng
 
 Một số tính năng của Vue được phát triển để hỗ trợ trong những tình huống hiếm gặp (edge case) hoặc để giúp cho việc nâng cấp một dự án cũ được dễ dàng hơn. Những tính năng này nếu lạm dụng có thể làm cho code của bạn trở nên khó bảo trì, hoặc thậm chí trở thành nguồn gây ra lỗi. Các quy tắc trong mức ưu tiên D giải thích thêm về những tính năng có nguy cơ rủi ro này, đồng thời hướng dẫn cho bạn biết nên tránh ở đâu và lúc nào.
 
